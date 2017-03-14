@@ -1,0 +1,22 @@
+table{
+    background-color: darkseagreen;
+}
+
+
+table, th, td {
+    border: 1px solid black;
+}
+
+table {
+    width: 100%;
+}
+
+th {
+    height: 50px;
+}
+
+tr:first-child{
+    background-color: #daff60;
+}
+tr:nth-child(even) {background-color: #f2f2f2;}
+
