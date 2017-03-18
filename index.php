@@ -19,7 +19,7 @@
 <body>
 
 
-<form action="login.php" method="post" id="myForm">
+<form action="login/login.php" method="post" id="myForm">
     Login:    <br /><input  type="text" name="login" required /><br />
     Password: <br /><input  type="password" name="password"  required />
     <br /><br />    <input type="submit" value="Zaloguj"  name="submit" />

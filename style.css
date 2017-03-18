@@ -2,6 +2,7 @@ body {
     background-color: #310f1e;
     color: white;
     font-size: 18px;
+    padding-left: 50px;
 }
 
 
@@ -9,6 +10,7 @@ table{
     background-color: #002905;
     color: black;
     text-align: center;
+    width: 700px;
 }
 
 
@@ -16,12 +18,11 @@ table, th, td {
     border: 1px solid black;
 }
 
-table {
-    width: 100%;
-}
+
 
 th {
     height: 50px;
+
 }
 
 

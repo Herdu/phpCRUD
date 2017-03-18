@@ -8,7 +8,7 @@
  */
 
     session_start();
-    require_once("db_data.php");
+    require_once("../database/db_data.php");
 
 
     function getRealPOST() {
@@ -46,12 +46,12 @@
             //login success
             $_SESSION['user'] = $login;
             $_SESSION['isLogged'] = true;
-            header("location: crud.php");
+            header("location: ../crud.php");
 
         }
         else
         {
-            header("location: index.php");
+            header("location: ../index.php");
         }
 
 

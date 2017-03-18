@@ -12,7 +12,7 @@ if (!isset($_SESSION['isLogged']))
 
 
 
-require_once("db_data.php");
+require_once("database/db_data.php");
 
 ?>
 <!DOCTYPE html>
@@ -26,18 +26,19 @@ require_once("db_data.php");
 
 </head>
 <body>
+todo: zabezpieczenia, admin_panel, kazdy_uzytkownik_ma_wlasna_tabele, walidacja_pól
 
 <h2>
-    Witaj, <?php echo $_SESSION['user'] ?>
+    Witaj, <?php echo ucwords($_SESSION['user']); ?>
 </h2>
 
-<a href="logout.php"><button>wyloguj</button></a>
+<a href="login/logout.php"><button>wyloguj</button></a>
 
-<form action="add.php" method="post" id="myForm">
+<form action="database/add.php" method="post" id="myForm">
     <br />
-    Dodaj:
-    <input  type="text" name="myname" required />
-    <input  type="text" name="price"  required />
+    <h2>Dodaj</h2>
+    Nazwa: <input  type="text" name="myname" required />
+    Cena: <input  type="text" name="price"  required />
     <input type="submit" value="Dodaj"  name="submit" />
 </form>
 
@@ -70,14 +71,14 @@ else
         echo "<tr>";
         echo "<td>". $row['id']. "<td>". $row['myname'] ."<td>". $row['price'];
         echo "<td>";
-        echo "<form method='post' action='delete.php'>";
+        echo "<form method='post' action='database/delete.php'>";
         echo "<input type='hidden' name='id' value='{$row['id']}' '>";
         echo "<input type='submit' value='delete'>";
         echo "</form>";
         echo "</td>";
 
         echo "<td>";
-        echo "<form method='post' action='update.php'>";
+        echo "<form method='post' action='database/update.php'>";
         echo "<input type='hidden' name='id' value='{$row['id']}' '>";
         echo "<input type='submit' value='update'>";
         echo "</form>";

@@ -6,17 +6,12 @@
  * Date: 13.03.17
  * Time: 18:27
  */
-
-
 session_start();
 
 if (!isset($_SESSION['isLogged']))
     header("location: index.php");
 
-
-
 require_once("db_data.php");
-
 
 function getRealPOST() {
     $pairs = explode("&", file_get_contents("php://input"));
@@ -40,9 +35,8 @@ $_POST = getRealPOST();
 if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
 
-    $price = $_POST['price'];
-    $name = $_POST['myname'];
 
+    $id = $_POST['id'];
 
     $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
 
@@ -53,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
     else
     {
-        $query = "INSERT INTO food ( myname, price ) VALUES ('$name', '$price');";
+        $query = "DELETE FROM food WHERE id=$id;";
 
         $mysqli->query($query);
         $mysqli->close();
@@ -65,8 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
 
 
-header("location: crud.php");
-
+header("location: ../crud.php");
 ?>
 
 

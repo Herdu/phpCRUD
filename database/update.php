@@ -16,7 +16,7 @@
 
 
 
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="../style.css">
 
 </head>
 <body>
@@ -102,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 
 
-<a href="crud.php"><button>Wróć</button></a>
+<a href="../crud.php"><button>Wróć</button></a>
 
 </body>
 </html>

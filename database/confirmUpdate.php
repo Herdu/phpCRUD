@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
 
 
-header("location: crud.php");
+header("location: ../crud.php");
 ?>
 
 
