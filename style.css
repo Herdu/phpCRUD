@@ -8,6 +8,7 @@ body {
 table{
     background-color: #002905;
     color: black;
+    text-align: center;
 }
 
 
@@ -30,4 +31,14 @@ tr:nth-child(odd) {background-color: #63ff4e;}
 tr:first-child{
     background-color: #046300;
     color: white;
+}
+
+input[value='delete']{
+    background-color: red;
+    color: white;
+}
+
+input[value='update']{
+    background-color: #fdff00;
+    color: #000000;
 }

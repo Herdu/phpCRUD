@@ -6,6 +6,12 @@
  * Time: 18:27
  */
 session_start();
+
+if (!isset($_SESSION['isLogged']))
+    header("location: index.php");
+
+
+
 require_once("db_data.php");
 
 ?>
@@ -24,6 +30,8 @@ require_once("db_data.php");
 <h2>
     Witaj, <?php echo $_SESSION['user'] ?>
 </h2>
+
+<a href="logout.php"><button>wyloguj</button></a>
 
 <form action="add.php" method="post" id="myForm">
     <br />

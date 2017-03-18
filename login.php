@@ -45,6 +45,7 @@
         {
             //login success
             $_SESSION['user'] = $login;
+            $_SESSION['isLogged'] = true;
             header("location: crud.php");
 
         }

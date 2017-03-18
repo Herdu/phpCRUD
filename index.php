@@ -1,5 +1,9 @@
 <?php
     session_start();
+
+    if (isset($_SESSION['isLogged']))
+        header("location: crud.php");
+
 ?>
 
 <!DOCTYPE html>

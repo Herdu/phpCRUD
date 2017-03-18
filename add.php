@@ -10,6 +10,11 @@
 
 session_start();
 
+if (!isset($_SESSION['isLogged']))
+    header("location: index.php");
+
+
+
 require_once("db_data.php");
 
 
