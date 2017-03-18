@@ -6,8 +6,9 @@
  * Date: 13.03.17
  * Time: 18:27
  */
+session_start();
 
-
+require_once("db_data.php");
 
 function getRealPOST() {
     $pairs = explode("&", file_get_contents("php://input"));
@@ -29,22 +30,33 @@ $_POST = getRealPOST();
 
 
 if ($_SERVER['REQUEST_METHOD'] == "POST"){
-    mysql_connect("localhost","root","") or die(mysql_error());
-    mysql_select_db("myDB") or die("Cannot connect to myDB");
+
 
 
     $id = $_POST['id'];
 
-     $query = mysql_query("DELETE FROM food WHERE id=$id;");
+    $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
+
+    if($mysqli->connect_errno)
+    {
+        echo "failed to connect to mysql: ". $mysqli->connect_error;
+    }
+
+    else
+    {
+        $query = "DELETE FROM food WHERE id=$id;";
+
+        $mysqli->query($query);
+        $mysqli->close();
+    }
 
 }
 
 
-session_start();
 
 
 
-header("location: index.php");
+header("location: crud.php");
 ?>
 
 

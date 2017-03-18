@@ -1,5 +1,13 @@
+body {
+    background-color: #310f1e;
+    color: white;
+    font-size: 18px;
+}
+
+
 table{
-    background-color: darkseagreen;
+    background-color: #002905;
+    color: black;
 }
 
 
@@ -15,8 +23,11 @@ th {
     height: 50px;
 }
 
-tr:first-child{
-    background-color: #daff60;
-}
-tr:nth-child(even) {background-color: #f2f2f2;}
 
+tr:nth-child(even) {background-color: #f2f2f2;}
+tr:nth-child(odd) {background-color: #63ff4e;}
+
+tr:first-child{
+    background-color: #046300;
+    color: white;
+}

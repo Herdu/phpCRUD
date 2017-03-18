@@ -1,3 +1,7 @@
+<?php
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,56 +15,11 @@
 <body>
 
 
-<form action="add.php" method="post" id="myForm">
-    <input  type="text" name="myname" required />
-    <input  type="text" name="price"  required />
-    <input type="submit" value="Dodaj"  name="submit" />
+<form action="login.php" method="post" id="myForm">
+    Login:    <br /><input  type="text" name="login" required /><br />
+    Password: <br /><input  type="password" name="password"  required />
+    <br /><br />    <input type="submit" value="Zaloguj"  name="submit" />
 </form>
-
-
-<br />
-
-<table>
-<tr>
-    <td>Id</td> <td>Nazwa</td> <td>Cena</td><td></td><td></td>
-</tr>
-<?php
-
-$db_name = "myDB";
-
-mysql_connect("localhost","root","") or die(mysql_error());
-mysql_select_db($db_name) or die("Cannot connect do myDB");
-
-
-
-
-
-$query = mysql_query("select * from food");
-while($row = mysql_fetch_array($query))
-{
-    echo "<tr>";
-    echo "<td>". $row['id']. "<td>". $row['myname'] ."<td>". $row['price'];
-    echo "<td>";
-    echo "<form method='post' action='delete.php'>";
-    echo "<input type='hidden' name='id' value='{$row['id']}' '>";
-    echo "<input type='submit' value='delete'>";
-    echo "</form>";
-    echo "</td>";
-
-    echo "<td>";
-    echo "<form method='post' action='update.php'>";
-    echo "<input type='hidden' name='id' value='{$row['id']}' '>";
-    echo "<input type='submit' value='update'>";
-    echo "</form>";
-    echo "</td>";
-
-
-    echo "</tr>";
-}
-?>
-
-</table>
-
 
 
 </body>

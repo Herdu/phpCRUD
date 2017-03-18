@@ -8,6 +8,10 @@
  */
 
 
+session_start();
+
+require_once("db_data.php");
+
 
 function getRealPOST() {
     $pairs = explode("&", file_get_contents("php://input"));
@@ -29,29 +33,35 @@ $_POST = getRealPOST();
 
 
 if ($_SERVER['REQUEST_METHOD'] == "POST"){
-    mysql_connect("localhost","root","") or die(mysql_error());
-    mysql_select_db("myDB") or die("Cannot connect to myDB");
 
-
-    foreach( $_POST as $key => $value){
-        echo "<br> ". $key ."   ". $value;
-
-
-    }
 
     $price = $_POST['price'];
     $name = $_POST['myname'];
 
-     $query = mysql_query("INSERT INTO food ( myname, price ) VALUES ('$name', '$price');");
+
+    $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
+
+    if($mysqli->connect_errno)
+    {
+        echo "failed to connect to mysql: ". $mysqli->connect_error;
+    }
+
+    else
+    {
+        $query = "INSERT INTO food ( myname, price ) VALUES ('$name', '$price');";
+
+        $mysqli->query($query);
+        $mysqli->close();
+    }
 
 }
 
 
-session_start();
 
 
 
-header("location: index.php");
+header("location: crud.php");
+
 ?>
 
 

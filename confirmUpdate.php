@@ -1,18 +1,9 @@
 
 <?php
-/**
- * Created by PhpStorm.
- * User: matt
- * Date: 13.03.17
- * Time: 18:27
- */
 
+session_start();
 
-function console_log( $data ){
-    echo '<script>';
-    echo 'console.log('. json_encode( $data ) .')';
-    echo '</script>';
-}
+require_once("db_data.php");
 
 
 function getRealPOST() {
@@ -38,18 +29,34 @@ $price = $_POST['newprice'];
 
 
 if ($_SERVER['REQUEST_METHOD'] == "POST"){
-    mysql_connect("localhost","root","") or die(mysql_error());
-    mysql_select_db("myDB") or die("Cannot connect to myDB");
 
-    console_log("UPDATE food SET myname='$name, price=$price WHERE id=$id;");
-    mysql_query("UPDATE food SET myname='$name', price=$price WHERE id=$id;");
+
+    $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
+
+    if($mysqli->connect_errno)
+    {
+        echo "failed to connect to mysql: ". $mysqli->connect_error;
+    }
+
+    else
+    {
+        $query = "UPDATE food SET myname='$name', price=$price WHERE id=$id;";
+
+        $mysqli->query($query);
+
+        $mysqli->close();
+
+    }
+
+
 
 }
 
 
 
 
-header("location: index.php");
+
+header("location: crud.php");
 ?>
 
 
