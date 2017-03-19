@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if ($mysqli->connect_errno) {
         echo "failed to connect to mysql: " . $mysqli->connect_error;
     } else {
-        $query = "SELECT * FROM food where id={$id}";
+        $query = "SELECT * FROM {$_SESSION['table']} where id={$id}";
         $res = $mysqli->query($query);
 
 

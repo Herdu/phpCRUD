@@ -46,6 +46,7 @@
             //login success
             $_SESSION['user'] = $login;
             $_SESSION['isLogged'] = true;
+            $_SESSION['table'] = $_SESSION['user'] . "Table";
             header("location: ../crud.php");
 
         }

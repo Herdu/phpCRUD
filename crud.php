@@ -14,6 +14,49 @@ if (!isset($_SESSION['isLogged']))
 
 require_once("database/db_data.php");
 
+
+
+
+
+    function checkTable(){
+
+
+
+        require("database/db_data.php");
+
+        $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
+
+        if($mysqli->connect_errno)
+        {
+            echo "failed to connect to mysql: ". $mysqli->connect_error;
+        }
+
+        else
+        {
+
+        if ($result = $mysqli->query("SHOW TABLES LIKE '".$_SESSION['table']."'")) {
+
+            if($result->num_rows == 1) {
+                //table exists
+
+            }
+            else {
+
+
+
+                $query = "CREATE TABLE {$_SESSION['table']}(id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+myname VARCHAR(30) NOT NULL,
+price int NOT NULL);";
+                if ($mysqli->query($query)){}
+
+
+            }
+        }
+
+
+        }
+    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +69,7 @@ require_once("database/db_data.php");
 
 </head>
 <body>
-todo: zabezpieczenia, admin_panel, kazdy_uzytkownik_ma_wlasna_tabele, walidacja_pól
+todo: zabezpieczenia, admin_panel, walidacja_pól
 
 <h2>
     Witaj, <?php echo ucwords($_SESSION['user']); ?>
@@ -52,6 +95,7 @@ todo: zabezpieczenia, admin_panel, kazdy_uzytkownik_ma_wlasna_tabele, walidacja_
 <?php
 
 
+
 $mysqli = new mysqli($db_host, $db_user, $db_pass, $db_name);
 
 if($mysqli->connect_errno)
@@ -61,7 +105,12 @@ if($mysqli->connect_errno)
 
 else
 {
-    $query = "select * from food";
+
+    checkTable();
+
+
+
+    $query = "select * from {$_SESSION['table']}";
 
     $res = $mysqli->query($query);
 

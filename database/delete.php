@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
     else
     {
-        $query = "DELETE FROM food WHERE id=$id;";
+        $query = "DELETE FROM {$_SESSION['table']} WHERE id=$id;";
 
         $mysqli->query($query);
         $mysqli->close();

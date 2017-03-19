@@ -11,6 +11,7 @@
 
     unset($_SESSION['isLogged']);
     unset($_SESSION['user']);
+    unset($_SESSION['table']);
     header("location: ../index.php");
 
 ?>

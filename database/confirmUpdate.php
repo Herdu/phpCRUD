@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
     else
     {
-        $query = "UPDATE food SET myname='$name', price=$price WHERE id=$id;";
+        $query = "UPDATE {$_SESSION['table']} SET myname='$name', price=$price WHERE id=$id;";
 
         $mysqli->query($query);
 

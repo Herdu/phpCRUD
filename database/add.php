@@ -53,7 +53,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
     else
     {
-        $query = "INSERT INTO food ( myname, price ) VALUES ('$name', '$price');";
+        $table = $_SESSION['table'];
+        $query = "INSERT INTO {$table} ( myname, price ) VALUES ('$name', '$price');";
 
         $mysqli->query($query);
         $mysqli->close();
