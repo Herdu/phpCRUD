@@ -10,6 +10,9 @@ session_start();
 if (!isset($_SESSION['isLogged']))
     header("location: index.php");
 
+if (isset($_SESSION['isAdmin']))
+    header("location: admin.php");
+
 
 
 require_once("database/db_data.php");

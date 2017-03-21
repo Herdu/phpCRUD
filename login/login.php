@@ -47,7 +47,17 @@
             $_SESSION['user'] = $login;
             $_SESSION['isLogged'] = true;
             $_SESSION['table'] = $_SESSION['user'] . "Table";
-            header("location: ../crud.php");
+            if ($row['role'] == 2)
+            {
+                $_SESSION['isAdmin'] = true;
+                header("location: ../admin.php");
+            }
+            else
+            {
+                header("location: ../crud.php");
+            }
+
+
 
         }
         else

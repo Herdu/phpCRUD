@@ -14,6 +14,11 @@ table{
 }
 
 
+.admin-table > tbody> tr:first-child{
+    background-color: #aa0505 !important;
+    color: white;
+}
+
 table, th, td {
     border: 1px solid black;
 }
@@ -42,4 +47,31 @@ input[value='delete']{
 input[value='update']{
     background-color: #fdff00;
     color: #000000;
+}
+
+.special-row{
+    background-color: #fdff00 !important;
+    color: black !important;
+}
+
+.alert{
+    color: red;
+}
+
+.admin-panel{
+    width: auto;
+    height: 100px;
+    background-color: white;
+    color: red;
+    border: solid red 2px;
+}
+
+.form-container{
+    display: inline-block;
+    width: 30%;
+    background-color: #14050e;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
 }
